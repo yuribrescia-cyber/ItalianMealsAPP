@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  Image,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import {ActivityIndicator, FlatList, Image, Pressable, StyleSheet, Text, View,} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { fetchItalianMeals } from "./services/mealsApi";
 import { loadFavoriteIds, saveFavoriteIds } from "./services/storage";
+
 
 interface MealSummary {
   idMeal: string;
@@ -120,7 +113,8 @@ export default function App() {
         />
       </SafeAreaView>
     </SafeAreaProvider>
-  );
+  );   
+  
 }
 
 const styles = StyleSheet.create({
