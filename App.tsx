@@ -1,5 +1,5 @@
 import React from "react";
-import {ActivityIndicator, FlatList, Image, Pressable, StyleSheet, Text, View,} from "react-native";
+import {ActivityIndicator, FlatList, Image, Pressable, StyleSheet, Text, View, useWindowDimensions} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { fetchItalianMeals } from "./services/mealsApi";
 import { loadFavoriteIds, saveFavoriteIds } from "./services/storage";
@@ -105,7 +105,7 @@ export default function App() {
                   style={styles.favButton}
                   onPress={() => toggleFavorite(item.idMeal)}
                 >
-                  <Text style={styles.favText}>{active ? "♥" : "♡"}</Text>
+                  <Text style={styles.favText}>{active ? "♥" : "+"}</Text>
                 </Pressable>
               </View>
             );
@@ -122,14 +122,14 @@ const styles = StyleSheet.create({
   centered: { flex: 1, padding: 16, gap: 8, justifyContent: "center" },
   title: { fontSize: 22, fontWeight: "700" },
   subtitle: { color: "#2492d1" },
-  error: { color: "#B00020" },
+  error: { color: "#ffffff" },
   button: {
     alignSelf: "flex-start",
     paddingVertical: 10,
     paddingHorizontal: 16,
     borderWidth: 1,
     borderRadius: 8,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#eb0000",
   },
   buttonText: { fontWeight: "600" },
   row: {
@@ -138,9 +138,9 @@ const styles = StyleSheet.create({
     gap: 12,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "#afafaf",
+    borderBottomColor: "#fc7a00",
   },
-  thumb: { width: 48, height: 48, borderRadius: 8 },
+  thumb: { width: 267, height: 70, borderRadius: 8 },
   mealName: { flex: 1, fontWeight: "600" },
   favButton: { padding: 8, borderWidth: 1, borderRadius: 70 },
   favText: { fontSize: 18 },
