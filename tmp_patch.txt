@@ -1,0 +1,61 @@
+--- old
++++ new
+@@
+-        <MealDetailsModal visible={detailsOpen} onClose={() => setDetailsOpen(false)} mealId={selectedMealId} />
+-        <FlatList
+-          data={state.items.filter((item) => item.strMeal.toLowerCase().includes(searchQuery.toLowerCase()))}
+-          keyExtractor={(item) => item.idMeal}
+-          contentContainerStyle={{ gap: 4 }}
+-          renderItem={({ item }) => {
+-            const active = favoriteIds.includes(item.idMeal);
+-            return (
+-              <View style={[styles.row, { borderBottomColor: colors.accent }]}> 
+-                <Image source={{ uri: item.strMealThumb }} style={styles.thumb} />
+-                <Text style={[styles.mealName, { color: colors.text }]} numberOfLines={2}>
+-                  {item.strMeal}
+-                </Text>
+-                <Pressable
+-                  style={styles.favButton}
+-                  onPress={(event) => {
+-                    event.stopPropagation();
+-                    toggleFavorite(item.idMeal);
+-                  }}
+-                >
+-                  <Text style={styles.favText}>{active ? "♥" : "+"}</Text>
+-                </Pressable>
+-              </Pressable>
+-            );
+-          }}
+-        />
++        <MealDetailsModal visible={detailsOpen} onClose={() => setDetailsOpen(false)} mealId={selectedMealId} />
++        <FlatList
++          data={state.items.filter((item) => item.strMeal.toLowerCase().includes(searchQuery.toLowerCase()))}
++          keyExtractor={(item) => item.idMeal}
++          contentContainerStyle={{ gap: 4 }}
++          renderItem={({ item }) => {
++            const active = favoriteIds.includes(item.idMeal);
++            return (
++              <Pressable
++                style={[styles.row, { borderBottomColor: colors.accent }]}
++                onPress={() => {
++                  setSelectedMealId(item.idMeal);
++                  setDetailsOpen(true);
++                }}
++              >
++                <Image source={{ uri: item.strMealThumb }} style={styles.thumb} />
++                <Text style={[styles.mealName, { color: colors.text }]} numberOfLines={2}>
++                  {item.strMeal}
++                </Text>
++                <Pressable
++                  style={styles.favButton}
++                  onPress={(event) => {
++                    event.stopPropagation();
++                    toggleFavorite(item.idMeal);
++                  }}
++                >
++                  <Text style={styles.favText}>{active ? "♥" : "+"}</Text>
++                </Pressable>
++              </Pressable>
++            );
++          }}
++        />
